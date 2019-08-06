@@ -2,8 +2,8 @@
 import 'core-js/es/map';
 import 'core-js/es/set';
 
-// if using Fetch API, `npm install whatwg-fetch` and uncomment:
-// import 'whatwg-fetch';
+// needed for legacy browsers to support Fetch API
+import 'whatwg-fetch';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

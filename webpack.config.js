@@ -31,7 +31,7 @@ module.exports = [
       es5Bundle.output.globalObject = 'this'; // fixes 'window is not defined' error in dev server
     }
     if (argv.mode === 'production') {
-      es5Bundle.plugins.push(prodCssPlugin); // overwrites identical CSS file from es6Main (ok)
+      es5Bundle.plugins.push(prodCssPlugin); // overwrites identical CSS file from es6Bundle (ok)
       es5Bundle.module.rules.push(prodCssRule);
     }
     return es5Bundle;

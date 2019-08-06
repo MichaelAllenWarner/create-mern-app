@@ -1,6 +1,6 @@
-# Create React SPA
+# Create MERN App
 
-This is a bare-bones skeleton for starting a single-page React app.
+This is a bare-bones skeleton for starting a MERN-stack app.
 
 ## Installation
 
@@ -10,9 +10,7 @@ To install, clone or download the repo and run `npm install`.
 
 ### Development Mode
 
-To run the app in development mode, use `npm run dev-client` and navigate to [`http://localhost:8080`](http://localhost:8080). The Webpack dev server is already set up for hot-reloading of React components.
-
-Alternatively you may use `npm run dev`, which runs the Express server in parallel with the Webpack dev server, but this is only needed if HTTP requests will be made to the Express server after the page initially loads (see the last section below on Implementing HTTP Requests).
+Use `npm run dev` to start the Webpack dev server and the Express server concurrently (the former forwards HTTP requests to the latter). Then navigate to [`http://localhost:8080`](http://localhost:8080). Hot-reloading of React components is supported.
 
 ### Production Mode
 
@@ -36,10 +34,6 @@ Experimental class properties are supported out of the box, so it’s fine to us
 
 Node’s experimental support for ES6 `import`/`export` syntax is enabled in this package, so use that rather than `require` and `module.exports` in both the `src` and `server` folders. In `webpack.config.js` and `webpack-helpers`, however, `require` and `module.exports` must be used.
 
-## Implementing HTTP Requests
+## HTTP Requests
 
-This skeleton does *not* presume that HTTP requests will be made to the server after the page is initially loaded. If they will be, `npm install` at least `body-parser` and uncomment as instructed in `server/server.js` (and write the API in the `server` folder, of course.)
-
-To make the requests work in development mode as well, uncomment the webpack dev server’s proxy settings as instructed in `webpack-helpers/base-bundles.js` (the `npm run dev` script already runs the Express server on port 3000 in parallel with the webpack dev server [port 8080], so once the API is written, diverting API calls to port 3000 in this manner will suffice).
-
-If the Fetch API will be used for HTTP requests, support legacy browsers by npm-installing `whatwg-fetch` and uncommenting in `src/js/es5-index.js` as instructed.
+In the `server` folder I’ve included a basic “doodad” sample route. It’s there as a model, but obviously you should get rid of it. To see it “in action,” start mongodb locally on port 27017 ([Mac/Brew instructions](https://github.com/mongodb/homebrew-brew)), use `npm run dev`, and navigate (or send a GET request) to [`http://localhost:3000/api/doodads`](http://localhost:3000/api/doodads); the response should be an empty array.

@@ -1,18 +1,22 @@
 import express from 'express';
 import compression from 'compression';
+import bodyParser from 'body-parser';
 
-// if implementing HTTP requests, `npm install body-parser` and uncomment:
-// import bodyParser from 'body-parser';
+import { doodadRouter } from './routes/doodad-router.js'; // EXAMPLE
+
+import { connectToDb } from './db.js';
 
 const app = express();
 
 app.use(compression());
 app.use(express.static('public'));
 
-// if implementing HTTP requests, uncomment:
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
-// also uncomment proxy settings in webpack-helpers/base-bundles.js (for dev-server)
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use('/api/doodads', doodadRouter); // EXAMPLE
+
+connectToDb();
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

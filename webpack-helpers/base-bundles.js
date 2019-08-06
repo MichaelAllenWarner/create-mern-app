@@ -7,15 +7,15 @@ const es6Bundle = {
     path: path.resolve(__dirname, '../public'),
     publicPath: '/'
   },
-  devServer: { // devServer only on this ES6 bundle
+  // comment out following if switching devServer to other bundle
+  devServer: { // devServer only on one bundle at a time
     contentBase: path.join(__dirname, '../src'), // not public b/c of how css loads in prod vs. dev
     compress: true,
-    // uncomment following lines if HTTP requests are implemented
-    // ('/api' should be whatever path is set up in Express server)
-    // proxy: {
-    //   '/api': 'http://localhost:3000'
-    // }
+    proxy: {
+      '/api': 'http://localhost:3000'
+    }
   },
+  // also comment out resolve if switching devServer to other bundle
   resolve: {
     alias: {
       'react-dom': '@hot-loader/react-dom'
@@ -50,6 +50,13 @@ const es5Bundle = {
     publicPath: '/'
   },
   // uncomment following lines if switching dev-server to this bundle
+  // devServer: { // devServer only on one bundle at a time
+  //   contentBase: path.join(__dirname, '../src'), // not public b/c of how css loads in prod vs. dev
+  //   compress: true,
+  //   proxy: {
+  //     '/api': 'http://localhost:3000'
+  //   }
+  // },
   // resolve: {
   //   alias: {
   //     'react-dom': '@hot-loader/react-dom'
